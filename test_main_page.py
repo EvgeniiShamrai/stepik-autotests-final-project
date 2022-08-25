@@ -10,3 +10,11 @@ def test_guest_can_go_to_login_page(browser):
     sleep(2)
     page_main.go_to_login_link()
     sleep(2)
+
+def test_guest_should_see_login_link(browser):
+    url = 'http://selenium1py.pythonanywhere.com/'
+    page_main = MainPage(browser, url)
+    page_main.open_site()
+    sleep(2)
+    page_main.should_be_login_link()
+    sleep(2)
