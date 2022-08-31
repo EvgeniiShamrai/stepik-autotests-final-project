@@ -49,3 +49,4 @@ def test_guest_should_see_registr_form(browser):
     page_main.go_to_login_link()
     sleep(2)
     login_page.should_be_register_form()
+
