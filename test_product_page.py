@@ -20,29 +20,40 @@ from pages.locators import ProductPageLocators
 #     time.sleep(2)
 #     mp.should_be_message_about_addid()
 #     mp.should_be_total_coast_product()
-@pytest.mark.xfail
-def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
-    url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
-    sp = AddProductBasket(browser,url)
-    sp.open_site()
-    sp.add_product()
-    time.sleep(1)
-    sp.should_not_be_success_message()
-
-def test_guest_cant_see_success_message(browser):
-    url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
-    sp = AddProductBasket(browser, url)
-    sp.open_site()
-    sp.should_not_be_success_message()
-
-@pytest.mark.xfail
-def test_message_disappeared_after_adding_product_to_basket(browser):
-    url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
-    sp = AddProductBasket(browser, url)
-    sp.open_site()
-    sp.add_product()
-    sp.should_not_be_success_message_after_add_product()
-
-
+# @pytest.mark.xfail
+# def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+#     url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+#     sp = AddProductBasket(browser,url)
+#     sp.open_site()
+#     sp.add_product()
+#     time.sleep(1)
+#     sp.should_not_be_success_message()
+#
+# def test_guest_cant_see_success_message(browser):
+#     url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+#     sp = AddProductBasket(browser, url)
+#     sp.open_site()
+#     sp.should_not_be_success_message()
+#
+# @pytest.mark.xfail
+# def test_message_disappeared_after_adding_product_to_basket(browser):
+#     url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+#     sp = AddProductBasket(browser, url)
+#     sp.open_site()
+#     sp.add_product()
+#     sp.should_not_be_success_message_after_add_product()
 
 
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = AddProductBasket(browser, link)
+    page.open_site()
+    page.should_be_login_link()
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = AddProductBasket(browser, link)
+    page.open_site()
+    page.go_to_login_link()
+    time.sleep(5)
