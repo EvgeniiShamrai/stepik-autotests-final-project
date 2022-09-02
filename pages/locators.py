@@ -16,3 +16,8 @@ class ProductPageLocators:
     COST_PRODUCT = (By.CSS_SELECTOR, '.product_main > .price_color')
     NAME_PRODUCT_IN_MESSAGE = (By.CSS_SELECTOR,'#messages > div:nth-child(1)')
     COST_PRODUCT_IN_BASKET = (By.CSS_SELECTOR,'#messages > div:nth-child(3) > div > p:nth-child(1)')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR,'#messages div:first-child')
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, '#login_link_inc')

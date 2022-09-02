@@ -1,13 +1,18 @@
+import math
+
 from selenium import webdriver
 from selenium.common import NoSuchElementException, NoAlertPresentException
-import math
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from pages.locators import BasePageLocators
 
 
 class BasePage:
     def __init__(self, browser: webdriver.Chrome, url, timeout=10):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        # self.browser.implicitly_wait(timeout)
 
     def open_site(self):
         self.browser.get(self.url)
@@ -16,6 +21,21 @@ class BasePage:
         try:
             self.browser.find_element(how, what)
         except NoSuchElementException:
+            return False
+        return True
+
+    def is_not_element_present(self, how, what, timeout=5):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
+
+    def is_disappeared(self, how, what, timeout=5):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
             return False
         return True
 
@@ -32,4 +52,3 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-
