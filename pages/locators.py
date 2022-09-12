@@ -20,3 +20,10 @@ class ProductPageLocators:
 
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+
+class ViewingBasketLocators:
+    BUTTON_BASKET = (By.CSS_SELECTOR, "div.pull-right.hidden-xs > span > a.btn-default")
+
+class BasketItemsLocators:
+    BASKET_HAS_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+    TEXT_BASKET_IS_EMPTY = (By.CSS_SELECTOR,"#content_inner > p")
