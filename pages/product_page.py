@@ -21,7 +21,8 @@ class AddProductBasket(BasePage):
         name_product = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT).text
         name_product_message = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT_IN_MESSAGE).text.strip('×\n')
         assert f'{name_product} has been added to your basket.'.lower() == name_product_message.lower(), \
-            'The name of the product added to the cart does not match the name of the product in the successful addition message'
+            'The name of the product added to the cart does not match the name of the product in the successful addition' \
+            '\ message'
 
     def should_be_total_coast_product(self):
         assert self.is_element_present(*ProductPageLocators.COST_PRODUCT), 'Product price is not presented'

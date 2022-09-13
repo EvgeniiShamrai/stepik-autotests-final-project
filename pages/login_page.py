@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import LoginPageLocators
 
 
+
 class LoginPage(BasePage):
     def should_be_login_page(self):
         self.should_be_login_url()
@@ -24,3 +25,11 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.REGISTR_FORM_EMAIL), 'Email field of the Registrate form is not presented'
         assert self.is_element_present(*LoginPageLocators.REGISTR_FORM_PASSWORD), 'Password field of the Registrate form is not presented'
         assert self.is_element_present(*LoginPageLocators.REGISTR_FORM_PASSWORD2), 'Password2 field of the Registrate form is not presented'
+
+    def register_new_user(self, email, password):
+        self.browser.find_element(*LoginPageLocators.REGISTR_FORM_EMAIL).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTR_FORM_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTR_FORM_PASSWORD2).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTR_BUTTON).click()
+
+
